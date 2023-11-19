@@ -21,8 +21,16 @@ public class PizzaController {
         this.pizzaService = pizzaService;
     }
     @GetMapping("/")
-    public ResponseEntity<List<Pizza>> getAll(){
-        return ResponseEntity.ok(pizzaService.getAll());
+    public ResponseEntity<Page<Pizza>> getAll(@RequestParam(defaultValue = "0") int page,
+                                              @RequestParam(defaultValue = "4") int elements){
+        return ResponseEntity.ok(pizzaService.getAll(page, elements));
+    }
+    @GetMapping("/availables")
+    public ResponseEntity<Page<Pizza>> getAvailables(@RequestParam(defaultValue = "0") int page,
+                                                        @RequestParam(defaultValue = "4") int elements,
+                                                        @RequestParam(defaultValue = "price") String sortBy,
+                                                        @RequestParam(defaultValue = "ASC") String sortDirection){
+        return ResponseEntity.ok(pizzaService.getAvailables(page, elements, sortBy, sortDirection));
     }
     @GetMapping("/notavailables")
     public ResponseEntity<List<Pizza>> getNotAvailables(){
