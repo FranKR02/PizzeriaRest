@@ -1,5 +1,8 @@
 package projects.pizzeria.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,9 +13,11 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table(name = "pizza_order")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idOrder")
 public class PizzaOrder {
     @Id
     @Column(name = "id_order", nullable = false)
@@ -31,7 +36,8 @@ public class PizzaOrder {
     @Column(name = "additional_notes", length = 200)
     private String additionalNotes;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "id_customer", referencedColumnName = "id_customer", updatable = false)
     private Customer customer;
 
