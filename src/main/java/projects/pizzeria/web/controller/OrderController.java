@@ -2,6 +2,7 @@ package projects.pizzeria.web.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import projects.pizzeria.persistence.entity.PizzaOrder;
@@ -28,5 +29,9 @@ public class OrderController {
     @GetMapping("/outside")
     public ResponseEntity<List<PizzaOrder>> getOutsideOrders(){
         return ResponseEntity.ok(orderService.getOutsideOrders());
+    }
+    @GetMapping("/customer/{idCustomer}")
+    public ResponseEntity<List<PizzaOrder>> getCustomerOrders(@PathVariable Long idCustomer){
+        return ResponseEntity.ok(orderService.getCustomerOrders(idCustomer));
     }
 }
