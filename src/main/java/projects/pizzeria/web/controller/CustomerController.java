@@ -19,7 +19,11 @@ public class CustomerController {
 
     @GetMapping("/phone/{phone}")
     public ResponseEntity<Customer> getByPhone(@PathVariable String phone){
-        return ResponseEntity.ok(customerService.getByPhone(phone));
+        if(customerService.getByPhone(phone) != null) {
+            return ResponseEntity.ok(customerService.getByPhone(phone));
+        }else{
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
