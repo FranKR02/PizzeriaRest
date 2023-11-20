@@ -2,6 +2,7 @@ package projects.pizzeria.service;
 
 import org.springframework.stereotype.Service;
 import projects.pizzeria.persistence.entity.PizzaOrder;
+import projects.pizzeria.persistence.projection.OrderSummary;
 import projects.pizzeria.persistence.repository.OrderRepository;
 
 import java.time.LocalDate;
@@ -25,5 +26,11 @@ public class OrderService {
     }
     public List<PizzaOrder> getOutsideOrders(){
         return orderRepository.findAllByMethodIn(Arrays.asList('D', 'C'));
+    }
+    public List<PizzaOrder> getCustomerOrders(Long idCustomer){
+        return orderRepository.findCustomerOrders(idCustomer);
+    }
+    public OrderSummary getSummary(Long id){
+        return orderRepository.findSummary(id);
     }
 }

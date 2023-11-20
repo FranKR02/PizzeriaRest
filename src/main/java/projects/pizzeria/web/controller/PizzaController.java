@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import projects.pizzeria.persistence.entity.Pizza;
 import projects.pizzeria.service.PizzaService;
+import projects.pizzeria.service.dto.UpdatePizzaPrieDTO;
 
 import java.util.List;
 
@@ -51,7 +52,6 @@ public class PizzaController {
     @GetMapping("/{id}")
     public ResponseEntity<Pizza> getById(@PathVariable Long id){
         if(pizzaService.exist(id) &  id != null){
-            pizzaService.delete(id);
             return ResponseEntity.ok(pizzaService.getById(id));
         }else{
             return ResponseEntity.notFound().build();
@@ -69,6 +69,15 @@ public class PizzaController {
     public ResponseEntity<Pizza> edit(@RequestBody Pizza pizza){
         if(pizzaService.exist(pizza.getIdPizza()) &  pizza.getIdPizza() != null){
             return ResponseEntity.ok(pizzaService.save(pizza));
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @PutMapping("/update")
+    public ResponseEntity<Void> updatePrice(@RequestBody UpdatePizzaPrieDTO dto){
+        if(pizzaService.exist(dto.getPizzaId()) &  dto.getPizzaId() != null){
+            pizzaService.updatePrice(dto);
+            return ResponseEntity.ok().build();
         }else{
             return ResponseEntity.notFound().build();
         }
