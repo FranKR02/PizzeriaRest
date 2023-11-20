@@ -2,15 +2,20 @@ package projects.pizzeria.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import projects.pizzeria.persistence.audit.AuditPizzaListener;
+import projects.pizzeria.persistence.audit.Auditable;
 
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 
 @Entity
 @Table(name = "pizza")
-public class Pizza {
+@EntityListeners({AuditingEntityListener.class, AuditPizzaListener.class})
+public class Pizza extends Auditable {
     @Id
     @Column(name = "id_pizza", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,4 +38,5 @@ public class Pizza {
 
     @Column(columnDefinition = "TINYINT", nullable = false)
     private Boolean available;
+
 }

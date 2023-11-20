@@ -5,9 +5,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import projects.pizzeria.persistence.entity.Pizza;
 import projects.pizzeria.persistence.repository.PizzaPageSortRepository;
 import projects.pizzeria.persistence.repository.PizzaRepository;
+import projects.pizzeria.service.dto.UpdatePizzaPrieDTO;
 
 import java.util.List;
 
@@ -56,5 +58,9 @@ public class PizzaService {
     }
     public Integer countVegan(){
         return pizzaRepository.countByVeganTrue();
+    }
+    @Transactional
+    public void updatePrice(UpdatePizzaPrieDTO dto){
+        pizzaRepository.updatePrice(dto);
     }
 }
