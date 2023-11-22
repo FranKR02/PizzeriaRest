@@ -27,5 +27,5 @@ public class PizzaOrden {
     private Tamano tamano;
     @ManyToOne
     @JoinColumn(name = "id_orden")
-    private Orden pizzaOrden;
+    private Orden orden;
 }
