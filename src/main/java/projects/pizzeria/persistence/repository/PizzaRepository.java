@@ -1,4 +1,4 @@
-package projects.pizzeria.persistence.audit;
+package projects.pizzeria.persistence.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import projects.pizzeria.persistence.entity.Pizza;

@@ -1,4 +1,4 @@
-package projects.pizzeria.persistence.audit;
+package projects.pizzeria.persistence.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import projects.pizzeria.persistence.entity.PizzaIngrediente;
