@@ -18,11 +18,11 @@ public class Cliente {
     @Column(updatable = false)
     private Long dni;
     @Column(nullable = false, length = 60)
-    private String name;
+    private String nombre;
     @Column(nullable = false, length = 100)
-    private String address;
+    private String direccion;
     @Column(nullable = false, length = 50, unique = true)
     private String email;
     @Column(nullable = false, length = 10, unique = true)
-    private Long phone;
+    private Long celular;
 }
