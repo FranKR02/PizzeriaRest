@@ -12,7 +12,7 @@ public interface PizzaRepository extends CrudRepository<Pizza, Long> {
     Optional<List<Pizza>> findAllByDisponibleIsTrueAndPrecio(Double precio);
     Optional<List<Pizza>> findAllByDisponibleIsTrueAndPrecioLessThan(Double precio);
     Optional<List<Pizza>> findAllByDisponibleIsTrueAndPrecioBetween(Double minPrecio, Double maxPrecio);
-    Optional<List<Pizza>> findAllByDisponibleAndVeganaIsTrue();
+    Optional<List<Pizza>> findAllByDisponibleIsTrueAndVeganaIsTrue();
     Optional<List<Pizza>> findAllByDisponibleIsTrue();
     Optional<List<Pizza>> findAllByDisponibleIsFalse();
     Optional<List<Pizza>> findAllByIngredienteListContains(String ingredient);

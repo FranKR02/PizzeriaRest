@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface ClienteRepository extends CrudRepository<Cliente,Long> {
     Optional<Cliente> findByEmail(String email);
-    Optional<Cliente> findByCelular(String celular);
+    Optional<Cliente> findByCelular(Long celular);
     Optional<Cliente> findByDireccion(String direccion);
     Optional<List<Cliente>> findAllByNombreIgnoreCase(String name);
     Optional<List<Cliente>> findAllByDireccionContaining(String partialDireccion);

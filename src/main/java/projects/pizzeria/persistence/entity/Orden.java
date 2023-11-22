@@ -26,6 +26,6 @@ public class Orden {
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
-    @OneToMany(mappedBy = "pizzaOrden", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "orden", fetch = FetchType.EAGER)
     private List<PizzaOrden> pizzasList;
 }

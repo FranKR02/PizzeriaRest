@@ -20,7 +20,7 @@ public class PizzaOrden {
     @Column(columnDefinition = "DECIMAL(15,2)")
     private Double precioPizzas;
     @ManyToOne
-    @Column(name = "id_pizza")
+    @JoinColumn(name = "id_pizza")
     private Pizza idPizza;
     @ManyToOne
     @JoinColumn(name = "id_tamano", nullable = false)
